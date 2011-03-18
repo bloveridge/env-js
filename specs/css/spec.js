@@ -94,6 +94,16 @@ test('CSS2Properties', function(){
     equals(div.style.cssText, 'display: block; height: 300px; width: 400px; opacity: 0.5; position: absolute;', '.style.cssText');
 });
 
+test('CSS2Properties uniqueness', function(){
+    var div = document.createElement('div');
+    var div2 = document.createElement('div');
+    div.setAttribute('style', 'top:5px;');
+    div2.setAttribute('style', 'top:10px;');
+
+    equals(div.style.top, '5px');
+    equals(div2.style.top, '10px');
+});
+
 test('document.styleSheets', function() {
     ok(document.styleSheets, 'document.styleSheets exists');
     equals(document.styleSheets.toString(), '[object StyleSheetList]', 'StyleSheetsList.toString()');
